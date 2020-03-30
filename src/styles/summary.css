@@ -1,0 +1,46 @@
+
+
+.page-header{
+    background-color: #f7f7f7;
+    padding: 2.2rem 0;
+    margin-bottom: 3.2rem;
+}
+.page-header__title{
+    font-weight: 300;
+    color: grey;
+    margin:0;
+}
+
+.page-header__actions{
+    margin-top: 4px;
+}
+
+span{
+    font-weight: bold;
+}
+
+.header_amount{
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.37em;
+    margin-block-end: 0.17em;
+    font-weight: bold;
+}
+
+.income_button {
+    color: white;
+    background-color: green!important;    
+}
+
+.spending_button {
+    color: white;
+    background-color: red!important;
+}
+
+.income_title{
+    color: green;
+}
+
+.spendings_title{
+    color: red;
+}

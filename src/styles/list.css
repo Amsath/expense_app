@@ -1,0 +1,57 @@
+.list-header{
+    background: #f7f7f7;
+    border : 1px solid lightgray;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem;
+}
+
+.list-item{
+    display:flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    border-top: none;
+    color: black;
+    padding: 0.7rem ;
+    text-decoration: none;
+    transition: background .3s ease; 
+}
+
+.list-item span{
+    font-weight:100;
+}
+.list-item:hover{
+    background: #f7f7f7;
+}
+
+.list-item_sub-title{
+    font-size: 11px;
+}
+
+.list-item_title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.list-item_desc{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.list-item_title_expense_color{
+    color: red
+}
+
+.list-item_title_income_color{
+    color: green
+}
+
+@media (min-width:45rem){
+    .list-item{
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.6rem;
+        align-items: center;
+    }
+}
