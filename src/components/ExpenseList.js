@@ -28,7 +28,7 @@ class ExpenseList extends React.Component {
             return <ExpenseListItem key={expense.id} {...expense} />
           })
         }
-        <div className="">
+        <div className="list-actions">
           <Link className="income_button button" to="/AddIncome">Add Income</Link>
           <Link className="spending_button button" to="/AddExpense">Add Expense</Link>
         </div>
