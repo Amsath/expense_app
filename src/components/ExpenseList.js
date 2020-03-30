@@ -8,10 +8,7 @@ import '../styles/visibility.css';
 import '../styles/list.css';
 
 class ExpenseList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   componentDidMount() {
     this.props.dispatch(thunkGetExpensesData());
   }

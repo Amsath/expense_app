@@ -1,22 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import numeral from 'numeral';
 import { selectExpenses } from '../selectors/expenses';
 import { calExpenseTotal, calIncomeBalance, calIncomeTotal } from '../selectors/expenses-calc';
 import '../styles/summary.css';
 
 class ExpensesSummary extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-
-  }
-
   render() {
-    const expenseWord = this.props.expenseCount === 1 ? 'expense' : 'expenses';
     const formattedExpensesTotal = numeral(this.props.expensesTotal).format('$0,0.00');
     const formattedIncome = numeral(this.props.income).format('$0,0.00');
     const formattedBalance = numeral(this.props.incomeBalance).format('$0,0.00');
