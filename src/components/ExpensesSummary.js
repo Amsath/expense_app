@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import numeral from 'numeral';
-import { selectExpenses, selectIncome } from '../selectors/expenses';
-import { calExpenseTotal, calIncomeBalance } from '../selectors/expenses-calc';
+import { selectExpenses } from '../selectors/expenses';
+import { calExpenseTotal, calIncomeBalance, calIncomeTotal } from '../selectors/expenses-calc';
 import '../styles/summary.css';
 
 class ExpensesSummary extends React.Component {
@@ -44,13 +44,13 @@ class ExpensesSummary extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const visibleExpenses = selectExpenses(state.expenseData.expenses, state.filters);
-  const income = selectIncome(state.expenseData.expenses);
+  const visibleExpenses = selectExpenses(state.expenseData.expenses, state.filters);  
+  const income = calIncomeTotal(state.expenseData.income);
   return {
     income: income,
     expenseCount: visibleExpenses.length,
     expensesTotal: calExpenseTotal(visibleExpenses),
-    incomeBalance: calIncomeBalance(state.expenseData.expenses, income.amount)
+    incomeBalance: calIncomeBalance(state.expenseData.expenses, calIncomeTotal(state.expenseData.income))
   };
 };
 

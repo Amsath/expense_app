@@ -6,7 +6,7 @@ import numeral from 'numeral';
 import { thunkRemoveExpense } from '../actions/expenses';
 
 const ExpenseListItem = ({ id, description, amount, createdAt, type, dispatch }) => {
-  const expenseTypeClass = (type === "expenses") ? "list-item_title list-item_title_expense_color" : "list-item_title list-item_title_income_color";
+  const expenseTypeClass = (type === "expense") ? "list-item_title list-item_title_expense_color" : "list-item_title list-item_title_income_color";
   return (
     <div className="list-item">
       <div>

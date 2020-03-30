@@ -36,7 +36,7 @@ export const thunkAddIncome = (incomeData) => {
     };
     incomes.push(incomeItem);
     localStorage.setItem("income", JSON.stringify(incomes));
-    dispatch(addExpense(incomeItem));
+    dispatch(addIncome(incomeItem));
 
     // localStorage.setItem("income", JSON.stringify(income));
     // dispatch(addExpense(income));
@@ -110,7 +110,7 @@ export const thunkGetExpensesData = () => {
   return (dispatch, getState) => {
     const expenses = JSON.parse(localStorage.getItem("expenses") || "[]");
     const income = JSON.parse(localStorage.getItem("income") || "[]");
-    return dispatch(setExpenseData({expenses: expenses.concat(income), income: income}));
+    return dispatch(setExpenseData({expenses: expenses, income: income}));
   }
 }
 

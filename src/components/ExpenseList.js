@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ExpenseListItem from './ExpenseListItem';
-import { selectExpenses } from '../selectors/expenses';
+import { selectExpenses, selectAppData } from '../selectors/expenses';
 import { thunkGetExpensesData } from '../actions/expenses';
 import '../styles/visibility.css';
 import '../styles/list.css';
@@ -25,9 +25,9 @@ class ExpenseList extends React.Component {
           <div className="show-for-desktop">Description</div>
           <div className="show-for-desktop"></div>
         </div>
-        {this.props.expenses.length === 0 && <p>No expense!</p>}
+        {this.props.appData.length === 0 && <p>No expense!</p>}
         {
-          this.props.expenses.map((expense) => {
+          this.props.appData.map((expense) => {
             return <ExpenseListItem key={expense.id} {...expense} />
           })
         }
@@ -41,9 +41,11 @@ class ExpenseList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const expenses = state.expenseData.expenses
+  const expenses = selectExpenses(state.expenseData.expenses, state.filters);
+  const appData = selectAppData(state.expenseData, state.filters);
   return {
-    expenses: selectExpenses(state.expenseData.expenses, state.filters),
+    appData: appData,
+    expenses: expenses,
   };
 };
 

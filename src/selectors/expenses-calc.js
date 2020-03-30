@@ -4,6 +4,12 @@ export function calExpenseTotal(expenses) {
         .reduce((sum, value) => sum + value, 0);
 };
 
+export function calIncomeTotal(incomes) {
+    return incomes
+        .map((income) => income.amount)
+        .reduce((sum, value) => sum + value, 0);
+};
+
 export function calIncomeBalance(expenses, income) {
     const totalExp = expenses
         .map((expense) => expense.amount)
