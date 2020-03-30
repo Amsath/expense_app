@@ -53,6 +53,10 @@
     color: green
 }
 
+.list-item_delete{
+    cursor: pointer;
+}
+
 @media (min-width:45rem){
     .list-item{
         flex-direction: row;

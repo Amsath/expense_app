@@ -37,9 +37,6 @@ export const thunkAddIncome = (incomeData) => {
     incomes.push(incomeItem);
     localStorage.setItem("income", JSON.stringify(incomes));
     dispatch(addIncome(incomeItem));
-
-    // localStorage.setItem("income", JSON.stringify(income));
-    // dispatch(addExpense(income));
   }
 }
 
@@ -57,7 +54,7 @@ export const thunkAddExpense = (expenseData = {}) => {
       note,
       amount,
       createdAt,
-      type : "expense"
+      type: "expense"
     };
     const expenses = JSON.parse(localStorage.getItem("expenses") || "[]");
     const expenseItem = {
@@ -76,13 +73,30 @@ export const removeExpense = ({ id } = {}) => ({
   id
 });
 
+// REMOVE_INCOME
+export const removeIncome = ({ id } = {}) => ({
+  type: 'REMOVE_INCOME',
+  id
+});
+
 export const thunkRemoveExpense = ({ id } = {}) => {
   return (dispatch, getState) => {
     const curId = id;
-    const expenses = JSON.parse(localStorage.getItem("expenses") || "[]");
-    const updatedExp = expenses.filter(({ id }) => id !== curId);
-    localStorage.setItem("expenses", JSON.stringify(updatedExp));
-    dispatch(removeExpense({ id }));
+    if (curId) {
+      const expenses = JSON.parse(localStorage.getItem("expenses") || "[]");
+      const exp = expenses.filter(({ id }) => id === curId);
+      if (exp.length > 0) {
+        const updatedExp = expenses.filter(({ id }) => id !== curId);
+        localStorage.setItem("expenses", JSON.stringify(updatedExp));
+        dispatch(removeExpense({ id }));
+      }
+      else{
+        const incomes = JSON.parse(localStorage.getItem("income") || "[]");
+        const updatedInc = incomes.filter(({ id }) => id !== curId);
+        localStorage.setItem("income", JSON.stringify(updatedInc));
+        dispatch(removeIncome({ id }));
+      }
+    }
   }
 }
 
@@ -110,7 +124,7 @@ export const thunkGetExpensesData = () => {
   return (dispatch, getState) => {
     const expenses = JSON.parse(localStorage.getItem("expenses") || "[]");
     const income = JSON.parse(localStorage.getItem("income") || "[]");
-    return dispatch(setExpenseData({expenses: expenses, income: income}));
+    return dispatch(setExpenseData({ expenses: expenses, income: income }));
   }
 }
 

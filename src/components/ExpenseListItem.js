@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import numeral from 'numeral';
 import { thunkRemoveExpense } from '../actions/expenses';
+import { MdDelete } from 'react-icons/md';
 
 const ExpenseListItem = ({ id, description, amount, createdAt, type, dispatch }) => {
   const expenseTypeClass = (type === "expense") ? "list-item_title list-item_title_expense_color" : "list-item_title list-item_title_income_color";
@@ -13,7 +14,7 @@ const ExpenseListItem = ({ id, description, amount, createdAt, type, dispatch })
         <div className={expenseTypeClass}>{numeral(amount).format('$0,0.00')}</div>
       </div>
       <div className="list-item_desc">{description}</div>
-      <button className="button" onClick={() => dispatch(thunkRemoveExpense({ id }))}> Delete </button>
+      <MdDelete className="list-item_delete" size={24} onClick={() => dispatch(thunkRemoveExpense({ id }))}> </MdDelete>
     </div>
   );
 }

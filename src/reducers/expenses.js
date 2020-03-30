@@ -22,17 +22,11 @@ export default (state = expensesReducerDefaultState, action) => {
         ...state,
         expenses: state.expenses.filter(({ id }) => id !== action.id)
       };
-    case 'EDIT_EXPENSE':
-      return state.expenses.map((expense) => {
-        if (expense.id === action.id) {
-          return {
-            ...expense,
-            ...action.updates
-          }
-        } else {
-          return expense;
-        }
-      });
+    case 'REMOVE_INCOME':
+      return {
+        ...state,
+        income: state.income.filter(({ id }) => id !== action.id)
+      };
     case 'SET_EXPENSE_DATA':
       return {
         ...state,
